@@ -42,6 +42,14 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/vite",
     },
   },
+  waku: {
+    name: "waku",
+    label: "Waku",
+    links: {
+      installation: "https://waku.gg/",
+      tailwind: "https://tailwindcss.com/docs/guides/vite",
+    },
+  },
   astro: {
     name: "astro",
     label: "Astro",

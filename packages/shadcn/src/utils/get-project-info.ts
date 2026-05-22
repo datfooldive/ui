@@ -58,7 +58,7 @@ export async function getProjectInfo(
     packageJson,
   ] = await Promise.all([
     fg.glob(
-      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      "**/{next,vite,astro,app,waku}.config.*|gatsby-config.*|composer.json|react-router.config.*",
       {
         cwd,
         deep: 3,
@@ -147,6 +147,18 @@ export async function getProjectInfo(
     configFiles.find((file) => file.startsWith("react-router.config."))?.length
   ) {
     type.framework = FRAMEWORKS["react-router"]
+    return type
+  }
+
+  // Waku.
+  // Waku exposes Vite configuration through waku.config.*.
+  if (
+    configFiles.find((file) => file.startsWith("waku.config."))?.length ||
+    packageJson?.dependencies?.waku ||
+    packageJson?.devDependencies?.waku
+  ) {
+    type.framework = FRAMEWORKS["waku"]
+    type.isRSC = true
     return type
   }
 

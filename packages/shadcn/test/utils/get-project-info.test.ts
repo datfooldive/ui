@@ -202,6 +202,20 @@ describe("get project info", async () => {
         aliasPrefix: null,
       },
     },
+    {
+      name: "waku",
+      type: {
+        framework: FRAMEWORKS["waku"],
+        isSrcDir: true,
+        isRSC: true,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/styles.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "@",
+      },
+    },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
       await getProjectInfo(
